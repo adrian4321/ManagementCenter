@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
             if(verify(name1,pass) == "0")
             {
                 Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show()
-                //val intent = Intent(this, MainActivity2::class.java)
-                //startActivity(intent)
-                //finish()
+                val intent = Intent(this, Home::class.java)
+                startActivity(intent)
+                finish()
             }
             else
             {
