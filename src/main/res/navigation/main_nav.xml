@@ -8,16 +8,16 @@
     <fragment
         android:id="@id/fragmentOne"
         android:name="com.example.managementcenter.FragmentOne"
-        android:label="fragment_fragment_one"
+        android:label="Create new ticket"
         tools:layout="@layout/fragment_fragment_one" />
     <fragment
         android:id="@id/fragmentTwo"
         android:name="com.example.managementcenter.fragmentTwo"
-        android:label="fragment_fragment_two"
+        android:label="Ticket Management"
         tools:layout="@layout/fragment_fragment_two" />
     <fragment
         android:id="@id/fragmentThree"
         android:name="com.example.managementcenter.FragmentThree"
-        android:label="fragment_fragment_three"
+        android:label="Report"
         tools:layout="@layout/fragment_fragment_three" />
 </navigation>
