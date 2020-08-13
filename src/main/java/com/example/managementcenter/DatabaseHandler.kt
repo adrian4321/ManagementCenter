@@ -11,18 +11,29 @@ import android.database.sqlite.SQLiteException
 class DatabaseHandler(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,null,DATABASE_VERSION) {
     companion object {
         private val DATABASE_VERSION = 1
-        private val DATABASE_NAME = "EmployeeDatabase"
-        private val TABLE_CONTACTS = "EmployeeTable"
+        private val DATABASE_NAME = "TicketDatabase"
+        private val TABLE_CONTACTS = "TicketTable"
         private val KEY_ID = "id"
-        private val KEY_NAME = "name"
-        private val KEY_EMAIL = "email"
+        private val KEY_CUSTOMERNAME = "customerName"
+        private val KEY_CUSTOMERPOSITION = "customerPosition"
+        private val KEY_DEPARTMENT = "department"
+        private val KEY_MINISTRYNAME = "ministryName"
+        private val KEY_ADDRESS = "address"
+        private val KEY_PHONENUMBER = "phoneNumber"
+        private val KEY_SUBJECT = "subject"
+        private val KEY_AGENTNAME = "agentName"
+        private val KEY_MESSAGE = "message"
     }
     override fun onCreate(db: SQLiteDatabase?) {
         // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         //creating table with fields
         val CREATE_CONTACTS_TABLE = ("CREATE TABLE " + TABLE_CONTACTS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_EMAIL + " TEXT" + ")")
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_CUSTOMERNAME + " TEXT,"
+                + KEY_CUSTOMERPOSITION + " TEXT," + KEY_DEPARTMENT + " TEXT,"
+                + KEY_MINISTRYNAME + " TEXT," + KEY_ADDRESS + " TEXT,"
+                + KEY_PHONENUMBER + " TEXT,"  + KEY_SUBJECT + " TEXT,"
+                + KEY_AGENTNAME + " TEXT,"    + KEY_MESSAGE + " TEXT"
+                +")")
         db?.execSQL(CREATE_CONTACTS_TABLE)
     }
 
@@ -38,8 +49,16 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(KEY_ID, emp.userId)
-        contentValues.put(KEY_NAME, emp.userName) // EmpModelClass Name
-        contentValues.put(KEY_EMAIL,emp.userEmail ) // EmpModelClass Phone
+        contentValues.put(KEY_CUSTOMERNAME, emp.customerName) // EmpModelClass Name
+        contentValues.put(KEY_CUSTOMERPOSITION,emp.customerPosition ) // EmpModelClass Phone
+        contentValues.put(KEY_DEPARTMENT, emp.department) // EmpModelClass Name
+        contentValues.put(KEY_MINISTRYNAME,emp.ministryName ) // EmpModelClass Phone
+        contentValues.put(KEY_ADDRESS, emp.address) // EmpModelClass Name
+        contentValues.put(KEY_PHONENUMBER,emp.phoneNumber ) // EmpModelClass Phone
+        contentValues.put(KEY_SUBJECT, emp.subject) // EmpModelClass Name
+        contentValues.put(KEY_AGENTNAME,emp.agentName ) // EmpModelClass Phone
+        contentValues.put(KEY_MESSAGE, emp.message) // EmpModelClass Name
+
         // Inserting Row
         val success = db.insert(TABLE_CONTACTS, null, contentValues)
         //2nd argument is String containing nullColumnHack
@@ -59,14 +78,32 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,
             return ArrayList()
         }
         var userId: Int
-        var userName: String
-        var userEmail: String
+        var customerName: String
+        var customerPosition: String
+        var department: String
+        var ministryName: String
+        var address: String
+        var phoneNumber: String
+        var subject: String
+        var agentName: String
+        var message: String
+
         if (cursor.moveToFirst()) {
             do {
                 userId = cursor.getInt(cursor.getColumnIndex("id"))
-                userName = cursor.getString(cursor.getColumnIndex("name"))
-                userEmail = cursor.getString(cursor.getColumnIndex("email"))
-                val emp= EmpModelClass(userId = userId, userName = userName, userEmail = userEmail)
+                customerName = cursor.getString(cursor.getColumnIndex("customerName"))
+                customerPosition = cursor.getString(cursor.getColumnIndex("customerPosition"))
+                department = cursor.getString(cursor.getColumnIndex("department"))
+                ministryName = cursor.getString(cursor.getColumnIndex("ministryName"))
+                address = cursor.getString(cursor.getColumnIndex("address"))
+                phoneNumber = cursor.getString(cursor.getColumnIndex("phoneNumber"))
+                subject = cursor.getString(cursor.getColumnIndex("subject"))
+                agentName = cursor.getString(cursor.getColumnIndex("agentName"))
+                message = cursor.getString(cursor.getColumnIndex("message"))
+
+                val emp= EmpModelClass(userId = userId, customerName = customerName, customerPosition = customerPosition, department = department,
+                        ministryName = ministryName, address = address, phoneNumber = phoneNumber,  subject = subject, agentName = agentName,
+                    message = message)
                 empList.add(emp)
             } while (cursor.moveToNext())
         }
@@ -77,8 +114,15 @@ class DatabaseHandler(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(KEY_ID, emp.userId)
-        contentValues.put(KEY_NAME, emp.userName) // EmpModelClass Name
-        contentValues.put(KEY_EMAIL,emp.userEmail ) // EmpModelClass Email
+        contentValues.put(KEY_CUSTOMERNAME, emp.customerName) // EmpModelClass Name
+        contentValues.put(KEY_CUSTOMERPOSITION,emp.customerPosition ) // EmpModelClass Phone
+        contentValues.put(KEY_DEPARTMENT, emp.department) // EmpModelClass Name
+        contentValues.put(KEY_MINISTRYNAME,emp.ministryName ) // EmpModelClass Phone
+        contentValues.put(KEY_ADDRESS, emp.address) // EmpModelClass Name
+        contentValues.put(KEY_PHONENUMBER,emp.phoneNumber ) // EmpModelClass Phone
+        contentValues.put(KEY_SUBJECT, emp.subject) // EmpModelClass Name
+        contentValues.put(KEY_AGENTNAME,emp.agentName ) // EmpModelClass Phone
+        contentValues.put(KEY_MESSAGE, emp.message) // EmpModelClass Name
 
         // Updating Row
         val success = db.update(TABLE_CONTACTS, contentValues,"id="+emp.userId,null)

@@ -13,16 +13,65 @@
         android:hint="enter id" />
 
     <EditText
-        android:id="@+id/updateName"
+        android:id="@+id/updateCustomerName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="enter name"/>
+        android:hint="enter customer name"/>
 
     <EditText
-        android:id="@+id/updateEmail"
+        android:id="@+id/updateCustomerPosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter customer position"/>
+    <EditText
+        android:id="@+id/updateDepartment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter department"/>
+
+    <EditText
+        android:id="@+id/updateMinistryName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="enter email"/>
+
+    <EditText
+        android:id="@+id/updateAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter address"/>
+
+    <EditText
+        android:id="@+id/updatePhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter phone number"/>
+
+    <EditText
+        android:id="@+id/updateSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter subject"/>
+
+    <EditText
+        android:id="@+id/updateAgentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter agent name"/>
+
+    <EditText
+        android:id="@+id/updateMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter message"/>
+
 </LinearLayout>
