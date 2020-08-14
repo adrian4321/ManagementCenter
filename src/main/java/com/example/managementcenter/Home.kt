@@ -16,6 +16,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_fragment_one.*
+import kotlinx.android.synthetic.main.fragment_fragment_one.tableLayout
+import kotlinx.android.synthetic.main.fragment_fragment_three.*
 //import kotlinx.android.synthetic.main.fragment_fragment_one.u_id
 import kotlinx.android.synthetic.main.fragment_fragment_two.*
 
@@ -126,6 +128,7 @@ class Home : AppCompatActivity() {
         val myListAdapter = MyListAdapter(this, empArrayId, empArraycustomerName, empArraycustomerPosition,empArraydepartment,empArrayministryName
                             ,empArrayaddress, empArrayphoneNumber, empArraysubject, empArrayagentName, empArraymessage)
         listView.adapter = myListAdapter
+        
     }
 
     //method for updating records based on user id
